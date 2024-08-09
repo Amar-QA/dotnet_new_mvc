@@ -1,11 +1,11 @@
-FROM mcr.microsoft.com/dotnet/aspnet:9.0-preview AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 5027
+EXPOSE 3001
 
-ENV ASPNETCORE_URLS=http://+:5027
+ENV ASPNETCORE_URLS=http://+:3001
 
 USER app
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0-preview AS build
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG configuration=Release
 WORKDIR /src
 COPY ["dotnet_new_mvc.csproj", "./"]
